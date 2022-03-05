@@ -96,13 +96,19 @@
 		
 		<!-- WebFlux -->
 
-        <dependency>
+<!--         <dependency> -->
 
-            <groupId>org.springframework.boot</groupId>
+<!--             <groupId>org.springframework.boot</groupId> -->
 
-            <artifactId>spring-boot-starter-webflux</artifactId>
+<!--             <artifactId>spring-boot-starter-webflux</artifactId> -->
 
-        </dependency>
+<!--         </dependency> -->
+        
+        <!-- OpenFeign -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
 	</dependencies>
 	
 	<dependencyManagement>
