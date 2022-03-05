@@ -1,0 +1,30 @@
+#Crear y poblar la BD
+docker run -d --name postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=bank -p 5432:5432 -v d:\OneDrive\Especialización\'Arquitecturas Evolutivas'\Practicas\Docker\microservicios/init.sql:/docker-entrypoint-initdb.d/init.sql  postgres 
+
+#Crear y ejecutar la imagen de Eureka
+docker build -t eureka .
+docker run -d --name eureka -p 1111:1111 eureka
+
+#Crear y ejecutar la imagen del Api
+docker build -t api-gateway .
+docker run -d --name api-gateway -p 8081:8081 --link eureka:eureka api-gateway
+
+#Crear y ejecutar la imagen de balance
+docker build -t balance .
+docker run -d --name balance -p 9091:9091 --link eureka:eureka --link postgres:postgres balance
+
+#Crear y ejecutar la imagen de Customer
+docker build -t customer .
+docker run -d --name customer -p 9092:9092 --link eureka:eureka --link postgres:postgres customer
+
+#Crear y ejecutar la imagen de Users
+docker build -t users .
+docker run -d --name users -p 9093:9093 --link eureka:eureka --link postgres:postgres users
+
+
+Nota:
+
+Para saltarse las pruebas a la hora de generar el .jar se debe hacer;
+maven clean
+maven build .. y en goals poner install
+marcar el check de skip Test, aplicar y aceptar.

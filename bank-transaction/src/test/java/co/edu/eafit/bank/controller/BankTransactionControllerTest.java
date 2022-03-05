@@ -70,7 +70,7 @@ class BankTransactionControllerTest {
 		String accountId = "4640-0341-9387-5781";
 		String userEmail = "vondrusek1@wisc.edu";
 		Double amount = 15000.0;
-
+	
 		WithdrawDTO withdrawDTO = new WithdrawDTO(accountId, amount, userEmail);
 		String jsonWithdrawDTO = objectMapper.writeValueAsString(withdrawDTO);
 
@@ -86,8 +86,9 @@ class BankTransactionControllerTest {
 		String accoIdDestination = "6592-7866-3024-5314";
 		Double amount = 15000.0;
 		String userEmail = "vondrusek1@wisc.edu";
+		String token = "123456";
 
-		TransferDTO transferDTO = new TransferDTO(accoIdOrigin, accoIdDestination, amount, userEmail);
+		TransferDTO transferDTO = new TransferDTO(accoIdOrigin, accoIdDestination, amount, userEmail,token);
 
 		String jsonTransferDTO = objectMapper.writeValueAsString(transferDTO);
 

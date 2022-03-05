@@ -28,4 +28,4 @@ public interface CustomerMapper {
 	public List<CustomerDTO> listCustomerToListCustomerDTO(List<Customer> customers);
 
 	public List<Customer> listCustomerDTOToListCustomer(List<CustomerDTO> customerDTOs);
-}
+} 
